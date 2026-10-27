@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Shield, EyeOff, Volume2, VolumeX, Menu, X, HeartHandshake, Sparkles, MessageSquareHeart, Gamepad2, HeartPulse, Send, PhoneCall } from 'lucide-react';
 import { TabType } from '../types';
 import { sounds } from '../utils/audio';
+import { Logo } from './Logo';
 
 interface HeaderProps {
   activeTab: TabType;
@@ -49,15 +50,7 @@ export const Header: React.FC<HeaderProps> = ({
             className="flex items-center gap-3 cursor-pointer group"
           >
             <div className="relative">
-              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-xl bg-gradient-to-tr from-emerald-500 via-teal-500 to-sky-400 p-[2px] shadow-lg shadow-emerald-500/20 group-hover:shadow-emerald-500/40 transition">
-                <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
-                  <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-emerald-400 group-hover:scale-110 transition-transform" />
-                </div>
-              </div>
-              <span className="absolute -bottom-1 -right-1 flex h-3.5 w-3.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-500 border-2 border-slate-950"></span>
-              </span>
+              <Logo className="w-11 h-11 sm:w-12 sm:h-12 drop-shadow-lg group-hover:scale-105 transition-transform" />
             </div>
             
             <div>

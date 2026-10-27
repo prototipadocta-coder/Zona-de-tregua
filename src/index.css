@@ -1,5 +1,16 @@
 @import "tailwindcss";
 
+/* Paleta institucional (I.E. San Antonio de Prado): verde, azul y dorado sobre azul marino.
+   Se redefinen las escalas de Tailwind para que toda la página las use sin tocar cada componente. */
+@theme {
+  --color-emerald-50:#effaf1; --color-emerald-100:#d6f3dc; --color-emerald-200:#aee6bb; --color-emerald-300:#7fd496; --color-emerald-400:#4bbd6d; --color-emerald-500:#2a9d4f; --color-emerald-600:#1f803f; --color-emerald-700:#1a6635; --color-emerald-800:#18512c; --color-emerald-900:#144326; --color-emerald-950:#0a2615;
+  --color-teal-50:#eef7fb; --color-teal-100:#d5ebf3; --color-teal-200:#aed6e3; --color-teal-300:#78bccd; --color-teal-400:#3aa6b9; --color-teal-500:#2589a0; --color-teal-600:#1d6f85; --color-teal-700:#1b5a6d; --color-teal-800:#1a4a59; --color-teal-900:#183e4a; --color-teal-950:#0b232b;
+  --color-sky-50:#eff7fd; --color-sky-100:#dbeefb; --color-sky-200:#bde0f7; --color-sky-300:#8ec5ee; --color-sky-400:#56a7e0; --color-sky-500:#2f87cc; --color-sky-600:#226cab; --color-sky-700:#1e5789; --color-sky-800:#1d4770; --color-sky-900:#1c3c5d; --color-sky-950:#11253b;
+  --color-amber-50:#fdf9e7; --color-amber-100:#faf0c3; --color-amber-200:#f6e3a1; --color-amber-300:#f1d06a; --color-amber-400:#ebbb36; --color-amber-500:#d9a21b; --color-amber-600:#b47f14; --color-amber-700:#8f5f12; --color-amber-800:#744b15; --color-amber-900:#613f16; --color-amber-950:#382008;
+  --color-slate-50:#f4f7fb; --color-slate-100:#e8edf4; --color-slate-200:#d4dde9; --color-slate-300:#b7c4d6; --color-slate-400:#8da0ba; --color-slate-500:#62799a; --color-slate-600:#3f5a80; --color-slate-700:#2a4163; --color-slate-800:#1a2f4d; --color-slate-900:#0f2038; --color-slate-950:#0a1628;
+}
+
+
 @layer base {
   body {
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -38,4 +49,16 @@
 
 .animate-pulse-glow {
   animation: pulseGlow 3s ease-in-out infinite;
+}
+
+/* Personajes del juego */
+.sprite-leg { transform-box: fill-box; transform-origin: 50% 0; }
+.sprite-idle { animation: spriteBob 2.6s ease-in-out infinite; }
+.sprite-walking .sprite-leg-l, .sprite-walking .sprite-arm-r { animation: swingA 0.35s ease-in-out infinite; }
+.sprite-walking .sprite-leg-r, .sprite-walking .sprite-arm-l { animation: swingB 0.35s ease-in-out infinite; }
+@keyframes swingA { 0%, 100% { transform: rotate(14deg); } 50% { transform: rotate(-14deg); } }
+@keyframes swingB { 0%, 100% { transform: rotate(-14deg); } 50% { transform: rotate(14deg); } }
+@keyframes spriteBob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-1.5px); } }
+@media (prefers-reduced-motion: reduce) {
+  .sprite-idle, .sprite-walking .sprite-leg { animation: none; }
 }

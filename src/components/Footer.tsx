@@ -1,5 +1,6 @@
 import React from 'react';
 import { Shield, HeartHandshake, Lock, PhoneCall, EyeOff, Sparkles } from 'lucide-react';
+import { Logo } from './Logo';
 import { TabType } from '../types';
 import { sounds } from '../utils/audio';
 
@@ -19,7 +20,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigateTab, onActivateDiscret
           <div className="md:col-span-2 space-y-3">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 rounded-lg bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center">
-                <Shield className="w-4 h-4 text-emerald-400" />
+                <Logo className="w-6 h-6" />
               </div>
               <span className="text-base font-extrabold text-white tracking-tight">
                 ZONA DE TREGUA

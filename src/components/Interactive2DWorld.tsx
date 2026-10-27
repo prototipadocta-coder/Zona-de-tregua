@@ -27,6 +27,7 @@ import {
 } from 'lucide-react';
 import { Character, ExplorableMap, WorldNPC, WorldItem, ChoiceOption, TabType } from '../types';
 import { CHARACTERS } from '../data/gameData';
+import { CharacterSprite } from './CharacterSprite';
 import { EXPLORABLE_MAPS } from '../data/worldMapsData';
 import { sounds } from '../utils/audio';
 
@@ -347,7 +348,7 @@ export const Interactive2DWorld: React.FC<Interactive2DWorldProps> = ({ onNaviga
                     : 'text-slate-400 hover:text-white hover:bg-slate-800'
                 }`}
               >
-                <span>{char.avatar}</span>
+                <CharacterSprite look={char.id} size={26} />
                 <span>{char.name.split(' ')[0]}</span>
               </button>
             );
@@ -575,14 +576,14 @@ export const Interactive2DWorld: React.FC<Interactive2DWorldProps> = ({ onNaviga
                 </div>
 
                 {/* NPC Avatar representation */}
-                <div className={`relative w-11 h-11 rounded-2xl flex items-center justify-center text-xl shadow-xl transition-all border-2 ${
+                <div className={`relative w-12 h-14 rounded-2xl flex items-center justify-center text-xl shadow-xl transition-all border-2 ${
                   isResolved
                     ? 'bg-emerald-900/60 border-emerald-400 shadow-emerald-500/20'
                     : isHot
                     ? 'bg-rose-900/60 border-rose-500 shadow-rose-500/30'
                     : 'bg-sky-900/60 border-sky-400 shadow-sky-500/20'
                 }`}>
-                  <span>{isResolved ? '🕊️' : npc.avatar}</span>
+                  <CharacterSprite look={npc.avatar} size={42} mood={isResolved ? 'happy' : undefined} />
                 </div>
 
                 <span className="text-[9px] text-slate-300 bg-slate-950/80 px-1 rounded mt-0.5 font-semibold">
@@ -618,14 +619,14 @@ export const Interactive2DWorld: React.FC<Interactive2DWorldProps> = ({ onNaviga
             </div>
 
             {/* Animated Avatar Body */}
-            <div className={`relative w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-500 via-teal-400 to-sky-400 p-[2px] shadow-2xl shadow-emerald-500/40 transition-transform ${
+            <div className={`relative w-14 h-[68px] rounded-2xl bg-gradient-to-tr from-emerald-500 via-teal-400 to-sky-400 p-[2px] shadow-2xl shadow-emerald-500/40 transition-transform ${
               isWalking ? 'scale-105 -translate-y-1' : ''
             }`}>
-              <div className="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center text-2xl relative overflow-hidden">
+              <div className="w-full h-full bg-slate-950 rounded-[14px] flex items-center justify-center relative overflow-hidden">
                 <span className={`transition-transform duration-150 ${
                   facingDirection === 'left' ? '-scale-x-100' : ''
                 }`}>
-                  {selectedCharacter.avatar}
+                  <CharacterSprite look={selectedCharacter.id} size={58} walking={isWalking} />
                 </span>
 
                 {/* Subtle direction dot */}
@@ -719,8 +720,8 @@ export const Interactive2DWorld: React.FC<Interactive2DWorldProps> = ({ onNaviga
             {/* Modal Header */}
             <div className="flex items-center justify-between pb-3 border-b border-slate-800">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center text-2xl">
-                  {activeNPC.avatar}
+                <div className="w-14 h-14 rounded-2xl bg-slate-800 border border-slate-700 flex items-center justify-center text-2xl">
+                  <CharacterSprite look={activeNPC.avatar} size={44} />
                 </div>
                 <div>
                   <h3 className="text-lg font-bold text-white">{activeNPC.name}</h3>
