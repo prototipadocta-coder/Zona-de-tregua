@@ -1,0 +1,6 @@
+{
+  "name": "Zona de Tregua",
+  "description": "Plataforma escolar interactiva para la resolución pacífica de conflictos, desescalada de tensiones y prevención de riñas juveniles.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
